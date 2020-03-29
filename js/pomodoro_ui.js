@@ -18,7 +18,7 @@ let pomodoroUI = {
     button.disabled = false;
   },
 
-  setResetButtonEnabled: function (enabled) {
+  setStartButtonEnabled: function (enabled) {
     const button = document.getElementById('button1');
     button.disabled = !enabled;
   },

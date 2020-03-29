@@ -13,6 +13,10 @@ let pomodoroTimer = {
   updateCb: null,
 
   reset: function () {
+    if (this.isRunning()) {
+      this._stop();
+    }
+
     this.state = TIMER_STATES.RESET;
     this.timerValue = defaultTimerValue;
   },
@@ -28,9 +32,13 @@ let pomodoroTimer = {
   },
 
   pause: function () {
+    this._stop();
+    this.state = TIMER_STATES.PAUSED;
+  },
+
+  _stop: function () {
     clearInterval(this.updateIntervalId);
     this.updateIntervalId = -1;
-    this.state = TIMER_STATES.PAUSED;
   },
 
   toggle: function () {
@@ -50,19 +58,24 @@ let pomodoroTimer = {
   _update: function () {
     if (this.timerValue > 0) {
       this.timerValue--;
-
-      if (this.updateCb != null) {
-        this.updateCb();
-      }
     }
 
     if (this.timerValue == 0) {
-        clearInterval(this.updateIntervalId);
+      this._stop();
+    }
+
+    // This should be the last step.
+    if (this.updateCb != null) {
+      this.updateCb();
     }
   },
 
   isRunning: function () {
     return this.updateIntervalId != -1;
+  },
+
+  isFinished: function () {
+    return !this.isRunning() && (this.timerValue == 0);
   },
 }
 

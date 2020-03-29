@@ -2,6 +2,10 @@
 function updateCb () {
   let timerValue = pomodoroTimer.getTimerValue();
   pomodoroUI.updateTimerValue(timerValue);
+
+  if (pomodoroTimer.isFinished()) {
+    pomodoroUI.finished();
+  }
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -25,7 +29,9 @@ document.getElementById('button1').addEventListener('click', () => {
 });
 
 document.getElementById('button2').addEventListener('click', () => {
-    // resetTimer();
-    // setButtonState(BUTTON_STATES.START);
-    // setResetButtonState(false);
+  pomodoroTimer.reset();
+
+  pomodoroUI.reset();
+
+  updateCb();
 });

@@ -2,16 +2,16 @@ const {app, BrowserWindow} = require('electron')
 const path = require('path')
 
 function onAppReady() {
-    const mainWindow = new BrowserWindow({
-        width: 200,
-        height: 200,
-        resizable: false,
-        webPreferences: {
-            preload: path.join(__dirname, 'preload.js')
-        }
-    });
+  const mainWindow = new BrowserWindow({
+    width: 600,
+    height: 800,
+    resizable: false,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js')
+    }
+  });
 
-    mainWindow.loadFile(path.join(__dirname, '..', 'html', 'index.html'));
+  mainWindow.loadFile(path.join(__dirname, '..', 'html', 'index.html'));
 }
 
 app.whenReady().then(onAppReady)

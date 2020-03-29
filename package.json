@@ -1,0 +1,20 @@
+{
+  "name": "pomoralga",
+  "version": "1.0.0",
+  "description": "A timer management application",
+  "main": "js/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/juanrgar/pomoralga",
+  "keywords": [
+    "Electron",
+    "timer",
+    "pomodoro"
+  ],
+  "author": "GitHub",
+  "license": "GPL3",
+  "devDependencies": {
+    "electron": "^8.1.1"
+  }
+}

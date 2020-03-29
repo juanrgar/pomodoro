@@ -1,0 +1,3 @@
+# pomoralga
+
+Time management application.

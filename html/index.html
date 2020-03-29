@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+
+    <title>Pomodoro</title>
+  </head>
+  <body>
+    <div id="timer">
+      00:00
+    </div>
+    <button type="button" id="button2">
+      Reset
+    </button>
+    <button type="button" id="button1">
+      Start
+    </button>
+
+    <script src="../js/pomodoro_timer.js"></script>
+    <script src="../js/pomodoro_ui.js"></script>
+    <script src="../js/renderer.js"></script>
+  </body>
+</html>

@@ -1,17 +1,25 @@
-const {app, BrowserWindow} = require('electron')
+'use strict'
+
+const {app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
 
-function onAppReady() {
+function onPomodoroFinished (event) {
+}
+
+function onAppReady () {
   const mainWindow = new BrowserWindow({
     width: 600,
     height: 800,
     resizable: false,
+    icon: path.join(__dirname, 'img', 'tomato.png'),
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      nodeIntegration: true,
+        preload: path.join(__dirname, 'js', 'preload.js')
     }
   });
+  mainWindow.loadFile(path.join(__dirname, 'html', 'index.html'));
 
-  mainWindow.loadFile(path.join(__dirname, '..', 'html', 'index.html'));
+  ipcMain.on('pomodoro-finished', onPomodoroFinished);
 }
 
 app.whenReady().then(onAppReady)

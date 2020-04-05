@@ -11,6 +11,7 @@
     <title>Pomodoro</title>
   </head>
   <body>
+    <h1>Pomodoro</h1>
     <div id="timer">
       00:00
     </div>
@@ -20,6 +21,17 @@
     <button type="button" id="button1">
       Start
     </button>
+
+    <h1>Projects</h1>
+    <select id="projectList">
+    </select>
+    <button type="button" id="addNewProjectButton">
+      Add New Project
+    </button>
+    <div id="newProjectForm">
+      <label for="projectName">Project name:</label>
+      <input type="text" id="projectName" name="projectName">
+    </div>
 
     <script src="../js/pomodoro_timer.js"></script>
     <script src="../js/pomodoro_ui.js"></script>

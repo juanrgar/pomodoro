@@ -1,3 +1,7 @@
+'use strict'
+
+const ipcRenderer = require('electron')
+const jquery = require('jquery')
 
 function updateCb () {
   let timerValue = pomodoroTimer.getTimerValue();
@@ -5,6 +9,7 @@ function updateCb () {
 
   if (pomodoroTimer.isFinished()) {
     pomodoroUI.finished();
+    ipcRenderer.send('pomodoro-finished');
   }
 }
 
@@ -16,6 +21,13 @@ window.addEventListener('DOMContentLoaded', () => {
   pomodoroUI.setModel(pomodoroTimer);
 
   updateCb();
+
+  let projectList = document.getElementById('projectList');
+  var proj = document.createElement("option");
+  proj.text = "My Project";
+  projectList.add(proj);
+
+  jquery('#newProjectForm').hide();
 });
 
 document.getElementById('button1').addEventListener('click', () => {
@@ -34,4 +46,8 @@ document.getElementById('button2').addEventListener('click', () => {
   pomodoroUI.reset();
 
   updateCb();
+});
+
+document.getElementById('addNewProjectButton').addEventListener('click', () => {
+  jquery('#newProjectForm').show(100);
 });
